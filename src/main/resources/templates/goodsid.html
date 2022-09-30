@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>id查询商品</title>
+</head>
+<body>
+<table border="6" width="800px">
+    <tr>
+        <td>商品编号</td>
+        <td>姓名</td>
+        <td>原价</td>
+        <td>现价</td>
+        <td>商品图片</td>
+        <td>商品数量</td>
+        <td>是否推荐</td>
+        <td>是否广告</td>
+        <td>商品类型</td>
+    </tr>
+    <div th:each="good:${goods}">
+        <tr>
+            <td th:text="${good.id}"></td>
+            <td th:text="${good.gname}"></td>
+            <td th:text="${good.goprice}"></td>
+            <td th:text="${good.grprice}"></td>
+            <td th:text="${good.gpricture}"></td>
+            <td th:text="${good.gstore}"></td>
+            <td th:text="${good.isRecommend}"></td>
+            <td th:text="${good.isAdvertisement}"></td>
+            <td th:text="${good.goodstypeid}"></td>
+        </tr>
+    </div>
+</table>
+</body>
+</html>
