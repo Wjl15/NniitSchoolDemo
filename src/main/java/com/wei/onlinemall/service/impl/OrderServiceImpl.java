@@ -6,6 +6,8 @@ import com.wei.onlinemall.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author WeiJinLong
  * @Date 2022-09-29 21:40
@@ -22,5 +24,10 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public OrderBasePO getOrderbaseById(String orderid) {
         return orderBaseRepository.getById(orderid);
+    }
+
+    @Override
+    public List<OrderBasePO> getOrderByStatus(boolean status) {
+        return orderBaseRepository.getByStatus(status);
     }
 }

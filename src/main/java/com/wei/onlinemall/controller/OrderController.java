@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @Author WeiJinLong
  * @Date 2022-09-29 21:48
@@ -22,5 +24,11 @@ public class OrderController {
     @GetMapping("/order/{orderid}")
     public OrderBasePO getOrderbaseById(@PathVariable String orderid){
         return orderService.getOrderbaseById(orderid);
+    }
+
+    @GetMapping("/order/status/{status}")
+    public List<OrderBasePO> getOrderByStatus(@PathVariable boolean status){
+    return orderService.getOrderByStatus(status);
+
     }
 }
