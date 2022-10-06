@@ -6,6 +6,9 @@ import com.wei.onlinemall.pogo.po.GoodsPO;
 import com.wei.onlinemall.pogo.po.GoodsTypePO;
 import com.wei.onlinemall.service.IGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Id;
@@ -32,8 +35,8 @@ public class GoodsServiceImpl implements IGoodsService {
     }
 
     @Override
-    public List<GoodsPO> getAllGoods() {
-        return goodsRepository.findAll();
+    public Page<GoodsPO> getAllGoods(int page , int size) {
+        return goodsRepository.findAll(PageRequest.of(page-1,size));
     }
 
     @Override

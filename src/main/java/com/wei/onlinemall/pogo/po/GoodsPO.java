@@ -51,6 +51,7 @@ public class GoodsPO implements Serializable {
     @Column(name = "isAdvertisement")
     private String isAdvertisement;
 
+
 //    @Column(name = "goodstype_id")
 //    private String goodstypeid;
 
