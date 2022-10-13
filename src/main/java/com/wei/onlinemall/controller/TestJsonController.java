@@ -22,6 +22,7 @@ public class TestJsonController {
 //   public Person testJson(@RequestBody Person user){
 //       System.out.println(user.toString());
 
+
 @GetMapping("/test")
     public List<Map<String, Object>> testJson(@RequestBody(required = false) Person user){
         System.out.println(user.toString());
@@ -43,6 +44,7 @@ public class TestJsonController {
         map2.put("password","123456");
         map2.put("page", 20);
         person.add(map2);
+
         return person;
 
 //        return user;
