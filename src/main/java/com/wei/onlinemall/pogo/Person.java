@@ -16,4 +16,5 @@ public class Person {
     private String pname;
     private String password;
     private Integer page;
+    private String age;
 }
