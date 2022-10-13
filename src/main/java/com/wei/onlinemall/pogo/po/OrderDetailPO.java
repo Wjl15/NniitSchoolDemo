@@ -1,11 +1,12 @@
 package com.wei.onlinemall.pogo.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
 import java.io.Serializable;
 
 /**
@@ -16,12 +17,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
+
 @Builder
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
-@Table(name = "orderdetail")
+
+@TableName("orderdetail")
 public class OrderDetailPO implements Serializable {
-    @Id
+    @TableId(value = "order_detail_id" ,type = IdType.AUTO)
     private  String order_detail_id;
     private String orderbasetable_id;
     private String goodstable_id;

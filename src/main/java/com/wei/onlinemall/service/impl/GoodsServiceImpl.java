@@ -1,18 +1,16 @@
 package com.wei.onlinemall.service.impl;
 
-import com.wei.onlinemall.dao.GoodsRepository;
-import com.wei.onlinemall.dao.GoodsTypeRepository;
+import com.wei.onlinemall.dao.GoodsMapper;
+import com.wei.onlinemall.dao.GoodsTypeMapper;
 import com.wei.onlinemall.pogo.po.GoodsPO;
 import com.wei.onlinemall.pogo.po.GoodsTypePO;
 import com.wei.onlinemall.service.IGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Id;
-import java.util.Collections;
+
 import java.util.List;
 
 /**
@@ -23,48 +21,32 @@ import java.util.List;
 
 public class GoodsServiceImpl implements IGoodsService {
 
-    private GoodsRepository goodsRepository;
-    private GoodsTypeRepository goodsTypeRepository;
+
+    private GoodsMapper goodsMapper;
+    private GoodsTypeMapper goodsTypeMapper;
+
     @Autowired
-    public void setGoodsService(GoodsRepository goodsRepository) {
-        this.goodsRepository = goodsRepository;
+    public void setGoodsMapper(GoodsMapper goodsMapper) {
+        this.goodsMapper = goodsMapper;
     }
     @Autowired
-    public void setGoodsTypeRepository(GoodsTypeRepository goodsTypeRepository) {
-        this.goodsTypeRepository = goodsTypeRepository;
+    public void setGoodsTypeMapper(GoodsTypeMapper goodsTypeMapper) {
+        this.goodsTypeMapper = goodsTypeMapper;
     }
 
     @Override
-    public Page<GoodsPO> getAllGoods(int page , int size) {
-        return goodsRepository.findAll(PageRequest.of(page-1,size));
-    }
-
-    @Override
-    public List<GoodsPO> findGoodsById(String id) {
-        return goodsRepository.findAllById(Collections.singleton(id));
-    }
-
-    @Override
-    public List<GoodsPO> deleteGoodsById(String id) {
-        goodsRepository.deleteById(id);
-        return goodsRepository.findAll();
-
-    }
-
-    @Override
-    public List<GoodsPO> addCategory(GoodsPO goods) {
-        goodsRepository.save(goods);
-        return goodsRepository.findAll();
+    public List<GoodsPO> getAllGoods() {
+        return goodsMapper.selectList(null);
     }
 
     @Override
     public List<GoodsPO> getGoodsByPrice(double price) {
-        return goodsRepository.findByGrpriceLessThan(price);
+        return goodsMapper.selectList(null);
     }
 
     @Override
     public GoodsTypePO getGoodsByType(String typeid) {
-        return goodsTypeRepository.getById(typeid);
+        return goodsTypeMapper.selectOne(null);
     }
 
 

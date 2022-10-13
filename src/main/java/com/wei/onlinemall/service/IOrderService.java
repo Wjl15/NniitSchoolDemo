@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface IOrderService {
     OrderBasePO getOrderbaseById(String orderid);
+
     List<OrderBasePO> getOrderByStatus(boolean status);
 }

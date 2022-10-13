@@ -1,9 +1,12 @@
 package com.wei.onlinemall.pogo.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
-import javax.persistence.*;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,21 +18,14 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
 @Builder
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
-@Table(name = "goodstype")
+@TableName("goodstype")
 public class GoodsTypePO implements Serializable {
-    @Id
+    @TableId(value = "goodstype_id" ,type = IdType.AUTO)
+
     private String goodstype_id;
     private String typename;
 
-    @OneToMany(
-            mappedBy = "goodsType",
-            cascade = CascadeType.ALL,
-            targetEntity = GoodsPO.class,
-            fetch = FetchType.EAGER
-    )
-    private List<GoodsPO> goods;
+
 
 }
